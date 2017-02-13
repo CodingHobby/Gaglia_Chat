@@ -1,8 +1,9 @@
+var msgs = []
 window.addEventListener('load', function () {
-  var msgs = []
   var socket = io.connect('https://gagliachat.herokuapp.com/')
   socket.on('msg', function (msg) {
-    msgs.push(document.getElementById('msgs').innerHTML += '<div><span style="color: red"> ' + msg.user + '</span>: ' + msg.msg + '</div>')
+    msgs.push('<div><span style="color: red"> ' + msg.user + '</span>: ' + msg.msg + '</div>')
+    updateMsgs(msgs)
   })
 
 
@@ -10,7 +11,7 @@ window.addEventListener('load', function () {
     var userName = document.getElementById('yourId').value
     var msg = document.getElementById('message').value
     if (!userName || !msg) {
-      alert('Please Insert a User name')
+      alert('Please Enter both a User Name and a Message')
       return false
     } else {
 
@@ -22,6 +23,7 @@ window.addEventListener('load', function () {
       msgs.push('<div><span style="color: blue"> ' + msg.user + '</span>: ' + msg.msg + '</div>')
       updateMsgs(msgs)
       socket.emit('msg', msg)
+      document.getElementById('message').value = ''
     }
   })
 
