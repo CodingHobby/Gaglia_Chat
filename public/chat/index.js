@@ -1,6 +1,6 @@
 window.addEventListener('load', function () {
   var msgs = []
-  var socket = io.connect('localhost:3000')
+  var socket = io.connect('https://gagliachat.herokuapp.com/')
   socket.on('msg', function (msg) {
     msgs.push(document.getElementById('msgs').innerHTML += '<div><span style="color: red"> ' + msg.user + '</span>: ' + msg.msg + '</div>')
   })
