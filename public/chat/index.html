@@ -14,10 +14,6 @@
       padding: 20px 50px;
     }
     
-    .break {
-      margin-top: 50px;
-    }
-    
     #messages {
       margin-top: 20px
     }
@@ -26,15 +22,15 @@
 
 <body>
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-3">
       <label for="yourId">Your ID:</label><br>
       <input type="text" id="yourId" class="form-control">
     </div>
-    <div class="col-lg-5">
-      <label class="break" for="message">Your Message:</label><br>
+    <div class="col-lg-9">
+      <label for="message">Your Message:</label><br>
       <textarea id="message" class="form-control"></textarea><br>
       <button id="send" class="btn btn-default">Send</button><br>
-      <pre id="msgs"></pre><br>
+      <pre id="msgs" style="margin-top: 20px"></pre><br>
     </div>
     </row>
     <row>
