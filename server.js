@@ -8,6 +8,9 @@ var express = require('express'),
   socket = require('socket.io'),
   io = socket.listen(server)
 
+io.set('origins', '*:*')
+io.set('match origin protocol', true)
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', function (req, res) {
@@ -16,7 +19,7 @@ app.get('/', function (req, res) {
 
 io.sockets.on('connection', function (socket) {
   console.log('New connection on: ' + socket.id)
-  
+
   socket.on('msg', function (msg) {
     console.log(JSON.stringify(msg))
     socket.broadcast.emit('msg', msg)
