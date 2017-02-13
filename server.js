@@ -6,7 +6,7 @@ var express = require('express'),
     console.log('Server running on port ' + port)
   }),
   socket = require('socket.io'),
-  io = socket(server)
+  io = socket.listen(server)
 
 app.use(express.static(path.join(__dirname, 'public')))
 
