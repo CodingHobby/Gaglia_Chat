@@ -25,4 +25,8 @@ io.sockets.on('connection', function (socket) {
     socket.broadcast.emit('msg', msg)
   })
 
+  socket.on('stream', function(stream) {
+    socket.broadcast.emit('stream', stream)
+  })
+
 })

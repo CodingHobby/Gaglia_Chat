@@ -1,9 +1,11 @@
 var msgs = []
+var notif = new Audio('./notif.mp3')
 window.addEventListener('load', function () {
-  var socket = io.connect('https://gagliachat.herokuapp.com/')
+  var socket = io.connect(document.domain + ':' + location.port)
   socket.on('msg', function (msg) {
-    msgs.push('<div><span style="color: red"> ' + msg.user + '</span>: ' + msg.msg + '</div>')
+    msgs.push('<div class="msg"><span style="color: red"> ' + msg.user + '</span>: ' + msg.msg + '</div>')
     updateMsgs(msgs)
+    notif.play()
   })
 
 
@@ -19,8 +21,7 @@ window.addEventListener('load', function () {
         user: userName,
         msg: msg
       }
-      console.log('Sending msg: ' + JSON.stringify(msg))
-      msgs.push('<div><span style="color: blue"> ' + msg.user + '</span>: ' + msg.msg + '</div>')
+      msgs.push('<div class="msg"><span style="color: blue"> ' + msg.user + '</span>: ' + msg.msg + '</div>')
       updateMsgs(msgs)
       socket.emit('msg', msg)
       document.getElementById('message').value = ''
