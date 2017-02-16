@@ -24,9 +24,4 @@ io.sockets.on('connection', function (socket) {
     console.log(JSON.stringify(msg))
     socket.broadcast.emit('msg', msg)
   })
-
-  socket.on('stream', function(stream) {
-    socket.broadcast.emit('stream', stream)
-  })
-
 })

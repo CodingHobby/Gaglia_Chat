@@ -6,9 +6,9 @@ window.addEventListener('load', function () {
     msgs.push('<div class="msg"><span style="color: red"> ' + msg.user + '</span>: ' + msg.msg + '</div>')
     updateMsgs(msgs)
     notif.play()
-    
+
     Push.create('New Message!', {
-      body: msg.user + ': '+msg.msg,
+      body: msg.user + ': ' + msg.msg,
       icon: 'notif.png',
       timeout: 4000,
       onClick: function () {
