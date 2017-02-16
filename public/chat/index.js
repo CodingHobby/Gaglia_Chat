@@ -31,6 +31,7 @@ window.addEventListener('load', function () {
         user: userName,
         msg: msg
       }
+      
       msgs.push('<div class="msg"><span style="color: blue"> ' + msg.user + '</span>: ' + msg.msg + '</div>')
       updateMsgs(msgs)
       socket.emit('msg', msg)
